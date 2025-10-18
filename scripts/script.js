@@ -50,7 +50,8 @@ function throwAttack(div) {
     hitSuccess ? totalHits++ : totalMisses++;
 
     const hitText = `
-      <span class="log-dice">d20:${hitRoll}</span> + ${hitMod} = <b>${totalHit}</b> → 
+      <span class="log-dice">d20:${hitRoll}</span> + 
+      <span class="mod">${hitMod}</span> = <b>${totalHit}</b> → 
       <span class="${hitSuccess ? 'hit' : 'miss'}">${hitSuccess ? 'HIT' : 'MISS'}</span>
     `;
     log(`🎯 <b>${name}</b> [Roll ${i}] → ${hitText}`);
@@ -61,8 +62,14 @@ function throwAttack(div) {
       totalDamage += totalDmg;
 
       let dmgMsg = dmgDetails
-        .map(d => `${d.rolls.join('+')} (${d.dice})${d.mod ? (d.mod > 0 ? '+' + d.mod : d.mod) : ''} = <b>${d.sum}</b>`)
+        .map(d => {
+          const rolls = d.rolls.map(r => `<span class="log-dice">${r}</span>`).join(' + ');
+          const modTxt = d.mod !== 0 ? 
+            ` + <span class="mod">${d.mod > 0 ? '+' + d.mod : d.mod}</span>` : '';
+          return `${rolls} (<b>${d.dice}</b>)${modTxt} = <b>${d.sum}</b>`;
+        })
         .join(' | ');
+
       log(`💥 Damage → ${dmgMsg} → <b class="dmg-total">${totalDmg}</b>`, true);
 
       // crit double dmg
