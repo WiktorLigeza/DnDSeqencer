@@ -42,6 +42,25 @@ button:hover {
   margin-bottom: 10px;
 }
 
+.automation-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.automation-header .throw {
+  margin-left: auto;
+  background: #4caf50;
+  font-size: 16px;
+  padding: 12px 20px;
+}
+
+.automation-header .throw:hover {
+  background: #388e3c;
+}
+
 input, select {
   background: #333;
   color: #eee;
@@ -141,6 +160,38 @@ input, select {
   margin: 15px 0;
 }
 
+.damage-header {
+  background: #333;
+  padding: 10px 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.damage-header:hover {
+  background: #3a3a3a;
+}
+
+.damage-toggle {
+  font-size: 14px;
+  transition: transform 0.2s;
+}
+
+.damage-toggle.collapsed {
+  transform: rotate(-90deg);
+}
+
+.damage-content {
+}
+
+.damage-content.hidden {
+  display: none;
+}
+
 .damage-rows {
   margin: 15px 0;
 }
@@ -165,24 +216,4 @@ input, select {
 .dice-mod {
   border: 2px solid #ff00ff !important;
   width: 80px;
-}
-
-.remove-dice-row {
-  background: #f44336;
-  padding: 6px 10px;
-  font-size: 12px;
-  margin-left: 5px;
-}
-
-.remove-dice-row:hover {
-  background: #d32f2f;
-}
-
-.add-dice-row {
-  background: #4caf50;
-  margin-top: 10px;
-}
-
-.add-dice-row:hover {
-  background: #388e3c;
 }
