@@ -1,0 +1,135 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #111;
+  color: #eee;
+  padding: 20px;
+}
+
+h1 {
+  color: #00bcd4;
+  margin-bottom: 20px;
+}
+
+button {
+  background: #00bcd4;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #0099aa;
+}
+
+#automations {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.automation {
+  background: #222;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+input, select {
+  background: #333;
+  color: #eee;
+  border: none;
+  padding: 5px;
+  border-radius: 4px;
+  margin: 3px;
+}
+
+#logger {
+  margin-top: 30px;
+  background: #181818;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.log-entry {
+  margin: 4px 0;
+  padding: 4px;
+}
+
+.hit {
+  color: #4caf50;
+}
+
+.miss {
+  color: #f44336;
+}
+
+.popup {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #444;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  z-index: 999;
+  animation: fadeInOut 2s forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; top: -30px; }
+  10% { opacity: 1; top: 10px; }
+  90% { opacity: 1; top: 10px; }
+  100% { opacity: 0; top: -30px; }
+}
+
+.log-dice {
+  color: #2196f3; /* blue dice */
+  font-weight: bold;
+}
+
+.dmg-total {
+  color: #ffb300;
+}
+
+.log-entry {
+  border-left: 3px solid #333;
+  padding-left: 6px;
+}
+
+.log-entry.hit {
+  border-left-color: #4caf50;
+}
+
+.log-entry.miss {
+  border-left-color: #f44336;
+}
+.summary {
+  background: #222;
+  margin-top: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border-left: 4px solid #00bcd4;
+  font-size: 0.9rem;
+}
+
+.nat1 {
+  color: #ff4444;
+  font-weight: bold;
+  margin-left: 6px;
+}
+
+.nat20 {
+  color: #00e676;
+  font-weight: bold;
+  margin-left: 6px;
+}
+
