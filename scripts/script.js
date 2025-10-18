@@ -8,13 +8,17 @@ addBtn.addEventListener('click', () => {
   div.className = 'automation';
   div.innerHTML = `
     <input type="text" placeholder="Name" class="name">
+    <label>Hit Mod:</label>
     <input type="number" placeholder="Hit mod" class="hit-mod" value="0">
     <div class="damage-section">
       <label>Damage Dice Manager:</label>
       <div class="damage-rows" id="damage-rows-${Date.now()}">
         <div class="damage-row">
+          <label>Rolls:</label>
           <input type="number" placeholder="Dice Count" class="dice-count" min="1" value="1">
+          <label>Dice:</label>
           <input type="number" placeholder="Dice Sides" class="dice-sides" min="1" value="6">
+          <label>Mod:</label>
           <input type="number" placeholder="Modifier" class="dice-mod" value="0">
           <button class="remove-dice-row">❌</button>
         </div>
@@ -38,8 +42,11 @@ function setupDamageManager(automationDiv) {
     const newRow = document.createElement('div');
     newRow.className = 'damage-row';
     newRow.innerHTML = `
+      <label>Rolls:</label>
       <input type="number" placeholder="Dice Count" class="dice-count" min="1" value="1">
+      <label>Dice:</label>
       <input type="number" placeholder="Dice Sides" class="dice-sides" min="1" value="6">
+      <label>Mod:</label>
       <input type="number" placeholder="Modifier" class="dice-mod" value="0">
       <button class="remove-dice-row">❌</button>
     `;

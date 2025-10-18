@@ -2,22 +2,26 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background: #111;
   color: #eee;
-  padding: 20px;
+  padding: 30px;
+  margin: 0;
+  line-height: 1.6;
 }
 
 h1 {
   color: #00bcd4;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  margin-top: 0;
 }
 
 button {
   background: #00bcd4;
   border: none;
   color: white;
-  padding: 8px 12px;
+  padding: 10px 16px;
   border-radius: 6px;
   cursor: pointer;
   transition: 0.2s;
+  margin: 4px;
 }
 
 button:hover {
@@ -27,35 +31,38 @@ button:hover {
 #automations {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
 .automation {
   background: #222;
-  padding: 15px;
+  padding: 20px;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 input, select {
   background: #333;
   color: #eee;
   border: none;
-  padding: 5px;
+  padding: 8px 10px;
   border-radius: 4px;
-  margin: 3px;
+  margin: 5px;
 }
 
 #logger {
-  margin-top: 30px;
+  margin-top: 40px;
   background: #181818;
-  padding: 10px;
+  padding: 20px;
   border-radius: 8px;
 }
 
 .log-entry {
-  margin: 4px 0;
-  padding: 4px;
+  margin: 8px 0;
+  padding: 8px;
+  border-left: 3px solid #333;
+  padding-left: 12px;
 }
 
 .hit {
@@ -73,7 +80,7 @@ input, select {
   transform: translateX(-50%);
   background: #444;
   color: white;
-  padding: 10px 20px;
+  padding: 15px 25px;
   border-radius: 6px;
   font-weight: bold;
   z-index: 999;
@@ -92,17 +99,13 @@ input, select {
 }
 
 .log-dice {
-  color: #2196f3; /* blue dice */
+  color: #2196f3;
   font-weight: bold;
 }
 
 .dmg-total {
   color: #ffb300;
-}
-
-.log-entry {
-  border-left: 3px solid #333;
-  padding-left: 6px;
+  margin-left: 8px;
 }
 
 .log-entry.hit {
@@ -112,10 +115,11 @@ input, select {
 .log-entry.miss {
   border-left-color: #f44336;
 }
+
 .summary {
   background: #222;
-  margin-top: 6px;
-  padding: 6px 10px;
+  margin-top: 12px;
+  padding: 12px 15px;
   border-radius: 6px;
   border-left: 4px solid #00bcd4;
   font-size: 0.9rem;
@@ -124,52 +128,50 @@ input, select {
 .nat1 {
   color: #ff4444;
   font-weight: bold;
-  margin-left: 6px;
+  margin-left: 8px;
 }
 
 .nat20 {
   color: #00e676;
   font-weight: bold;
-.nat20 {
-  color: #00e676;
-  font-weight: bold;
-  margin-left: 6px;
+  margin-left: 8px;
 }
 
 .damage-section {
-  margin: 10px 0;
+  margin: 15px 0;
 }
 
 .damage-rows {
-  margin: 10px 0;
+  margin: 15px 0;
 }
 
 .damage-row {
   display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 10px;
+  margin-bottom: 12px;
   align-items: center;
 }
 
 .dice-count {
-  border: 2px solid #4caf50 !important; /* green outline */
+  border: 2px solid #4caf50 !important;
   width: 80px;
 }
 
 .dice-sides {
-  border: 2px solid #2196f3 !important; /* blue outline */
+  border: 2px solid #2196f3 !important;
   width: 80px;
 }
 
 .dice-mod {
-  border: 2px solid #ff00ff !important; /* magenta outline */
+  border: 2px solid #ff00ff !important;
   width: 80px;
 }
 
 .remove-dice-row {
   background: #f44336;
-  padding: 4px 8px;
+  padding: 6px 10px;
   font-size: 12px;
+  margin-left: 5px;
 }
 
 .remove-dice-row:hover {
@@ -178,10 +180,9 @@ input, select {
 
 .add-dice-row {
   background: #4caf50;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .add-dice-row:hover {
   background: #388e3c;
 }
-
