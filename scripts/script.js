@@ -10,20 +10,61 @@ addBtn.addEventListener('click', () => {
     <input type="text" placeholder="Name" class="name">
     <input type="number" placeholder="Hit mod" class="hit-mod" value="0">
     <div class="damage-section">
-      <label>Damage dices (e.g. 2d6+3d4+2):</label>
-      <input type="text" placeholder="Ex: 1d8+2" class="dmg-seq">
+      <label>Damage Dice Manager:</label>
+      <div class="damage-rows" id="damage-rows-${Date.now()}">
+        <div class="damage-row">
+          <input type="number" placeholder="Dice Count" class="dice-count" min="1" value="1">
+          <input type="number" placeholder="Dice Sides" class="dice-sides" min="1" value="6">
+          <input type="number" placeholder="Modifier" class="dice-mod" value="0">
+          <button class="remove-dice-row">❌</button>
+        </div>
+      </div>
+      <button class="add-dice-row">➕ Add Dice</button>
     </div>
     <button class="throw">🎲 Throw</button>
   `;
   automationsDiv.appendChild(div);
 
+  setupDamageManager(div);
   div.querySelector('.throw').addEventListener('click', () => throwAttack(div));
 });
+
+function setupDamageManager(automationDiv) {
+  const damageSection = automationDiv.querySelector('.damage-section');
+  const addDiceBtn = damageSection.querySelector('.add-dice-row');
+  const damageRows = damageSection.querySelector('.damage-rows');
+
+  addDiceBtn.addEventListener('click', () => {
+    const newRow = document.createElement('div');
+    newRow.className = 'damage-row';
+    newRow.innerHTML = `
+      <input type="number" placeholder="Dice Count" class="dice-count" min="1" value="1">
+      <input type="number" placeholder="Dice Sides" class="dice-sides" min="1" value="6">
+      <input type="number" placeholder="Modifier" class="dice-mod" value="0">
+      <button class="remove-dice-row">❌</button>
+    `;
+    damageRows.appendChild(newRow);
+
+    newRow.querySelector('.remove-dice-row').addEventListener('click', () => {
+      if (damageRows.children.length > 1) {
+        newRow.remove();
+      }
+    });
+  });
+
+  // Setup remove button for initial row
+  const initialRemoveBtn = damageSection.querySelector('.remove-dice-row');
+  initialRemoveBtn.addEventListener('click', () => {
+    if (damageRows.children.length > 1) {
+      initialRemoveBtn.parentElement.remove();
+    }
+  });
+}
 
 function throwAttack(div) {
   const name = div.querySelector('.name').value || 'Unnamed';
   const hitMod = parseInt(div.querySelector('.hit-mod').value) || 0;
-  const dmgSeq = div.querySelector('.dmg-seq').value;
+  const damageRows = div.querySelectorAll('.damage-row');
 
   const ac = parseInt(prompt('Enemy Armour Class:'));
   const throws = parseInt(prompt('Number of throws:'));
@@ -57,7 +98,7 @@ function throwAttack(div) {
     log(`🎯 <b>${name}</b> [Roll ${i}] → ${hitText}`);
 
     if (hitSuccess) {
-      const dmgDetails = rollDamageVerbose(dmgSeq);
+      const dmgDetails = rollDamageFromRows(damageRows);
       const totalDmg = dmgDetails.reduce((a, b) => a + b.sum, 0);
       totalDamage += totalDmg;
 
@@ -74,7 +115,7 @@ function throwAttack(div) {
 
       // crit double dmg
       if (hitRoll === 20) {
-        const critDetails = rollDamageVerbose(dmgSeq);
+        const critDetails = rollDamageFromRows(damageRows);
         const critTotal = critDetails.reduce((a, b) => a + b.sum, 0);
         totalDamage += critTotal;
         log(`🔥 <b>CRIT!</b> extra damage roll: <b class="dmg-total">+${critTotal}</b>`, true);
@@ -98,6 +139,23 @@ function throwAttack(div) {
 
 function rollDie(sides) {
   return Math.floor(Math.random() * sides) + 1;
+}
+
+function rollDamageFromRows(damageRows) {
+  const results = [];
+  for (let row of damageRows) {
+    const count = parseInt(row.querySelector('.dice-count').value) || 1;
+    const sides = parseInt(row.querySelector('.dice-sides').value) || 6;
+    const mod = parseInt(row.querySelector('.dice-mod').value) || 0;
+    
+    if (sides > 0 && count > 0) {
+      const rolls = [];
+      for (let i = 0; i < count; i++) rolls.push(rollDie(sides));
+      const sum = rolls.reduce((a, b) => a + b, 0) + mod;
+      results.push({ dice: `${count}d${sides}`, rolls, mod, sum });
+    }
+  }
+  return results;
 }
 
 function rollDamageVerbose(seq) {

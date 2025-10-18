@@ -130,54 +130,58 @@ input, select {
 .nat20 {
   color: #00e676;
   font-weight: bold;
-  margin-left: 6px;
-}
-.log-dice {
-  color: #2196f3; /* blue dice numbers */
-  font-weight: bold;
-}
-
-.mod {
-  color: #ff00ff; /* magenta modifiers */
-  font-weight: bold;
-}
-
-.dmg-total {
-  color: #ffb300; /* golden total damage */
-}
-
-.log-entry {
-  border-left: 3px solid #333;
-  padding-left: 6px;
-  margin-bottom: 4px;
-}
-
-.log-entry.hit {
-  border-left-color: #4caf50;
-}
-
-.log-entry.miss {
-  border-left-color: #f44336;
-}
-
-.summary {
-  background: #222;
-  margin-top: 6px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  border-left: 4px solid #00bcd4;
-  font-size: 0.9rem;
-}
-
-.nat1 {
-  color: #ff4444;
-  font-weight: bold;
-  margin-left: 6px;
-}
-
 .nat20 {
   color: #00e676;
   font-weight: bold;
   margin-left: 6px;
+}
+
+.damage-section {
+  margin: 10px 0;
+}
+
+.damage-rows {
+  margin: 10px 0;
+}
+
+.damage-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.dice-count {
+  border: 2px solid #4caf50 !important; /* green outline */
+  width: 80px;
+}
+
+.dice-sides {
+  border: 2px solid #2196f3 !important; /* blue outline */
+  width: 80px;
+}
+
+.dice-mod {
+  border: 2px solid #ff00ff !important; /* magenta outline */
+  width: 80px;
+}
+
+.remove-dice-row {
+  background: #f44336;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.remove-dice-row:hover {
+  background: #d32f2f;
+}
+
+.add-dice-row {
+  background: #4caf50;
+  margin-top: 5px;
+}
+
+.add-dice-row:hover {
+  background: #388e3c;
 }
 
